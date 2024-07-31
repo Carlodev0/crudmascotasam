@@ -14,8 +14,10 @@ mongoose.connect(uri)
   .then(()=> console.log('conectado a mongodb'))
 .catch(e => console.log('error al conectar',e))
 
+/* middleware para contenido estatico */
+app.use(express.static(__dirname + '/public'));
 
-
+/* enrutamiento */
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
