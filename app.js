@@ -11,6 +11,7 @@ const dbname='mascotas';
 
 const uri = `mongodb+srv://${usuario}:${password}@cluster0.j6obnuu.mongodb.net/${dbname}?retryWrites=true&w=majority&appName=Cluster0`
 
+
 /* conexion a base de datos qya que la otra se pego en mascotas 
 const usuario = "full_stack_6pm";
 const password = "VeKkaFOEzuitO0qy";
@@ -20,6 +21,7 @@ const uri = `mongodb+srv://${usuario}:${password}@cluster0.zpgqwwo.mongodb.net/$
 mongoose.connect(uri)
   .then(()=> console.log('conectado a mongodb'))
 .catch(e => console.log('error al conectar',e))
+
 /* establecee el motor de plantillas */
 app.set('views engine', 'ejs');
 app.set('views', __dirname + '/views');
@@ -36,9 +38,18 @@ app.get('/', (req, res) => {
 
 /* ejemplo de enrutamiento  */
 
-app.get("/servicios", (req, res)=>(
-  res.send("bienvenido a la paginas de servicios")
-));
+app.get("/servicios", (req, res)=>{
+  //res.send("bienvenido a la paginas de servicios");
+  res.render('servicios', {titulo: "Nuestros servicios Dinamicos"});
+});
+
+/* direccionar a vista 404 cada vez que se de un error */
+app.use((req, res, next)=>{
+  res.status(404).render('404' , {
+    titulo: "Error 404",
+    descripcion: "Pagina no encontrada"
+  });
+})
 
 app.use(express.static(__dirname + '/public'));
 
