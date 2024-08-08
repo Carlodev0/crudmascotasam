@@ -1,4 +1,3 @@
-const e = require('express');
 const express = require('express')
 const app = express()
 const port = 3000
@@ -7,7 +6,7 @@ const port = 3000
 const mongoose = require('mongoose');
 const usuario = 'full-stack';
 const password = 'wv3fbYIz85Cp6cvU';
-const dbname='mascotas';
+const dbname='veterinaria';
 
 const uri = `mongodb+srv://${usuario}:${password}@cluster0.j6obnuu.mongodb.net/${dbname}?retryWrites=true&w=majority&appName=Cluster0`
 
@@ -23,7 +22,7 @@ mongoose.connect(uri)
 .catch(e => console.log('error al conectar',e))
 
 /* establecee el motor de plantillas */
-app.set('views engine', 'ejs');
+app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 /* middleware para contenido estatico */

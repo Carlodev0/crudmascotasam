@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router();
 
-const mascota = require('../models/mascota');
+const Mascota = require('../models/mascota');
 
-router.length("/", async (req, res)=>{
+router.get("/", async (req, res)=>{
     try{
     const arrayMascotas = await Mascota.find();
     console.log(arrayMascotas)
@@ -16,3 +16,4 @@ router.length("/", async (req, res)=>{
 //        {id: 'mas002', nombre: 'Bella', descripcion: "Gata Criolla"},
 //      {id: 'mas003',
 })
+module.exports = router;
