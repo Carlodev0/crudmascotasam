@@ -30,7 +30,8 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 
 /* rutas web */
-app.use('/', require('/router/rutasweb'))
+app.use('/', require('./router/rutasweb'))
+app.use('/mascotas', require('./router/mascotas'))
 
 /* direccionar a vista 404 cada vez que se de un error */
 app.use((req, res, next)=>{
