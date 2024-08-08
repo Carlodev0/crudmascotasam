@@ -29,19 +29,8 @@ app.set('views', __dirname + '/views');
 /* middleware para contenido estatico */
 app.use(express.static(__dirname + '/public'));
 
-
-/* enrutamiento */
-app.get('/', (req, res) => {
-  /*res.send('Hello World!')*/
-  res.render('index', {titulo: "Bienvenido a Node.js con express y con ejs"});  
-})
-
-/* ejemplo de enrutamiento  */
-
-app.get("/servicios", (req, res)=>{
-  //res.send("bienvenido a la paginas de servicios");
-  res.render('servicios', {titulo: "Nuestros servicios Dinamicos"});
-});
+/* rutas web */
+app.use('/', require('/router/rutasweb'))
 
 /* direccionar a vista 404 cada vez que se de un error */
 app.use((req, res, next)=>{
