@@ -2,6 +2,12 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+// parse application/x-www-form-urlencoded
+//app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+//app.use(bodyParser.json())
+
 /* coneccion a la base de datos */
 const mongoose = require('mongoose');
 const usuario = 'full-stack';
@@ -11,7 +17,7 @@ const dbname='veterinaria';
 const uri = `mongodb+srv://${usuario}:${password}@cluster0.j6obnuu.mongodb.net/${dbname}?retryWrites=true&w=majority&appName=Cluster0`
 
 
-/* conexion a base de datos qya que la otra se pego en mascotas 
+/*conexion a base de datos qya que la otra se pego en mascotas 
 const usuario = "full_stack_6pm";
 const password = "VeKkaFOEzuitO0qy";
 const dbName = "veterinaria";
@@ -43,5 +49,5 @@ app.use((req, res, next)=>{
 app.use(express.static(__dirname + '/public'));
 
 app.listen(port, () => {
-  console.log(`Eejemplo de aplicacion node con express escuchando en puerto ${port}`)
+  console.log(`Ejemplo de aplicacion node con express escuchando en puerto ${port}`)
 })
