@@ -1,0 +1,16 @@
+<%- include('template/header', {tituloWeb: 'crear mascota'}); %>
+
+<h1>crear mascotas</h1>
+
+<div class="container">
+    <form action="/mascotas" method="post">
+        
+        <label>Nombre de la mascota</label>
+        <input class="form-control my-2" type="text" name="nombre" id="nombre" placeholder="Escriba el nombre de la mascota">
+        <label>Descrpcion de la mascota</label>
+        <input class="form-control my-2" type="text" name="descripcion" id="descripcion" placeholder="escriba una descripcion">
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+
+<%- include('template/footer'); %> 

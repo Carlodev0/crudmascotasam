@@ -13,6 +13,23 @@ router.get("/", async (req, res)=>{
 }
 })
 
+//ruta del boton crear 
+router.get("/crear", (req, res)=>{
+    res.render('crear');
+});
+
+/* router para recibir datos del formulario crear */
+router.post("/", async (req, res)=>{
+    const body = req.body;
+    //console.log(body);
+    try {
+        await Mascota.create(body)
+        res.redirect('/mascotas')
+    } catch (error) {
+        console.log('error: ', error)
+    }
+});
+
  //   res.render('mascotas' , {arrayMascotas: [
  //       {id: 'mas001', Nombre: 'coco', descripcion: 'Perro FreinchPoddle'},
  //       {id: 'mas002', Nombre: 'nomo', descripcion: 'Perro pinche'},

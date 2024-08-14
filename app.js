@@ -1,12 +1,13 @@
 const express = require('express')
+const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 
-// parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({ extended: false }))
+//parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
-//app.use(bodyParser.json())
+app.use(bodyParser.json())
 
 /* coneccion a la base de datos */
 const mongoose = require('mongoose');
@@ -37,6 +38,8 @@ app.use(express.static(__dirname + '/public'));
 /* rutas web */
 app.use('/', require('./router/rutasweb'))
 app.use('/mascotas', require('./router/mascotas'))
+app.use('/servicios', require('./router/servicios'))
+app.use('/productos', require('./router/productos'))
 
 /* direccionar a vista 404 cada vez que se de un error */
 app.use((req, res, next)=>{

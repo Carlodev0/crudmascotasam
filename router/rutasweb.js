@@ -10,13 +10,17 @@ router.get('/', (req, res) => {
   })
   
 /* ejemplo de enrutamiento  */
-
-
+/*
+// enrutamiento a servicios
 router.get("/servicios", (req, res)=>{
 //res.send("bienvenido a la paginas de servicios");
     res.render('servicios', {titulo: "Nuestros servicios Dinamicos"});
   });
-  
-
+ // enrutamiento a mascotas 
+router.get("/mascotas", (req, res)=>{
+    //res.send("bienvenido a la paginas de servicios");
+        res.render('mascotas', {find: "Mascota"});
+      });
+  */    
   module.exports = router;
   

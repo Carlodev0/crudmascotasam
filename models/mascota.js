@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const schema = mongoose.Schema;
 
-const mascotaSchema = new Schema({
+const mascotaSchema = new schema({
     nombre: String,
-    description: String
+    descripcion: String
 })
 
 /* creacion del modelo */
