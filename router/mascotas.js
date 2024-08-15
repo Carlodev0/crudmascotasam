@@ -26,7 +26,7 @@ router.post("/", async (req, res)=>{
         await Mascota.create(body)
         res.redirect('/mascotas')
     } catch (error) {
-        console.log('error: ', error)
+        console.log('error:', error)
     }
 });
 
