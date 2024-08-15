@@ -30,23 +30,24 @@ router.post("/", async (req, res)=>{
     }
 });
 
- //   res.render('mascotas' , {arrayMascotas: [
- //       {id: 'mas001', Nombre: 'coco', descripcion: 'Perro FreinchPoddle'},
- //       {id: 'mas002', Nombre: 'nomo', descripcion: 'Perro pinche'},
- //       {id: 'mas003', Nombre: 'poncho', descripcion: 'gato'},
- //       {id: 'mas004', Nombre: 'roco', descripcion: 'loro'}
- //   ]})
-
-
 /* router para editar un documento */
 router.get("/:id",  async  (req, res)=>{
     const id =  req.params.id;
     try{
         const mascotaDB = await Mascota.findOne({_id: id})
-        console.log(mascotaDB)
+        //console.log(mascotaDB)
+        res.render('detalle',{
+            mascota: mascotaDB,
+            error: false
+        })  
     }
-    catch{
-        console.log("Error");
+    catch (error) {
+        console.log("Error", error)
+        res.render('detalle',{
+            error: true,
+            mensaje: "no se encontro registro que coincida con el id"
+        })
+
     }
 })
 module.exports = router;
