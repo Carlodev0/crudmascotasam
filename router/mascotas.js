@@ -50,4 +50,29 @@ router.get("/:id",  async  (req, res)=>{
 
     }
 })
+
+/* router para eliminar  un documento */
+router.delete("/:id",  async  (req, res)=>{
+    const id =  req.params.id;
+    try{
+        const mascotaDB = await Mascota.findOneAndDelete({_id: id})
+        if (!mascotaDB) {
+            res.json({
+                estado: false,
+                mensaje: "No fue posible eliminar el registro"
+
+            })
+            
+        } else {
+            res.json({
+                estado: true,
+                mensaje: "Registro eliminado"
+
+            }
+            )}  
+    
+    catch (error) {
+        console.log("Error", error)
+    }
+});
 module.exports = router;
