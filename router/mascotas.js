@@ -69,10 +69,11 @@ router.delete("/:id",  async  (req, res)=>{
                 mensaje: "Registro eliminado"
 
             }
-            )}  
-    
-    catch (error) {
+            )}
+        }
+        catch(error) {
         console.log("Error", error)
     }
-});
+})
+
 module.exports = router;
