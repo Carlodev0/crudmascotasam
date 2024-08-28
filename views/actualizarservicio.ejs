@@ -1,0 +1,43 @@
+<%- include('template/header', {tituloWeb: 'actualizar servicio'}); %>
+
+<div class="container">
+    <a href="/servicios" class="btn btn-dark my-2">volver</a>
+    <h1>Nuevo Servicio</h1>
+    <form action="/servicios" method="post">
+        
+        <input class="form-control my-2" type="text" name="servicio" id="servicio" placeholder="Nombre del servicio">
+        
+        
+        <div class="d-grid">
+            <button href="servicios/<%=servicio.id %>" class="btn btn-info" type="submit">Agregar</button>
+           
+          </div>
+        
+       
+        
+    </form>
+</div>
+
+<script>
+    
+    const btnActualizar = document.querySelector('#btnActualizar');
+    btnActualizar.addEventListener('click', async () =>{
+      console.log('me diste click');
+    const id = btnActualizar.dataset.id;
+    console.log(id);
+    try{
+      const data = await fetch(`/servicios/${id}` , {method: 'update'});
+      const respuesta = await data.json();
+      console.log(respuesta); 
+      if (respuesta) {
+        window.location.href = '/servicios';
+      } else {
+        console.log('respuesta');
+      }
+    }
+    catch(error){
+      console.log('error')
+
+    }
+
+    })

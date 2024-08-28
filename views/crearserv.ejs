@@ -1,10 +1,11 @@
-<%- include('template/header', {tituloWeb: 'crear mascota'}); %>
+<%- include('template/header', {tituloWeb: 'crear servicio'}); %>
 
 <div class="container">
     <h1>Nuevo Servicio</h1>
+    <a href="/servicios" class="btn btn-dark my-2">volver</a>
     <form action="/servicios" method="post">
         
-        <input class="form-control my-2" type="text" name="nombre-servicio" id="servicio" placeholder="Nombre del servicio">
+        <input class="form-control my-2" type="text" name="servicio" id="servicio" placeholder="Nombre del servicio">
         
         
         <div class="d-grid">

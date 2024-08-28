@@ -3,6 +3,54 @@
 
     <h1 class="text-primary"><%= titulo %></h1>
     <h2>Pagina de inicio con EJS</h2>
-    <p>Lorem ipsum dolor sit amet consectetur </p>
- 
+    
+    <div class="imagenes d-flex justify-content-center row">
+
+    </div>
+    
+    <script>
+        /*
+    const apiKey = 'live_WWzXpKBs8WBCiDhRbPBXXOelaphXYyjm0xcfTQ2tfLxX061BmnydPkKAe0fdE4bT';
+    const url = 'https://api.thecatapi.com/v1/images/search?limit=10';
+
+
+
+    fetch(url, {
+        method: 'GET', // O 'POST', 'PUT', etc.
+        headers: {
+        'x-api-key' : `${apiKey}`,
+        'Content-Type': 'application/json'
+  }
+})
+            .then(response => response.json())
+            .then(data => data.forEach((publicacion) => {
+            document.querySelector('.imagenes').innerHTML += 
+                            `${publicacion.id}  
+                            <img src="${publicacion.url}" Style>`
+                            })
+        .catch(error => console.error('Error:', error)));
+        */
+        const apiKey = 'live_WWzXpKBs8WBCiDhRbPBXXOelaphXYyjm0xcfTQ2tfLxX061BmnydPkKAe0fdE4bT';
+        const url = 'https://api.thecatapi.com/v1/images/search?limit=40';
+
+
+
+    fetch(url, {
+        method: 'GET', // O 'POST', 'PUT', etc.
+        headers: {
+        'x-api-key' : `${apiKey}`,
+        'Content-Type': 'application/json'
+  }
+            
+            })
+                .then(response => response.json())
+                .then(data => data.forEach((imagen) => {
+                    document.querySelector('.imagenes').innerHTML +=
+                        `<img src="${imagen.url}" class="m-1" style="height: 120px; width: 120px">`
+                })
+                    .catch(error => console.error('Error: ', error)));
+        
+    </script>
+
  <%- include('template/footer'); %> 
+ 

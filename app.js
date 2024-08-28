@@ -41,6 +41,7 @@ app.use('/mascotas', require('./router/mascotas'))
 app.use('/servicios', require('./router/servicios'))
 app.use('/productos', require('./router/productos'))
 
+
 /* direccionar a vista 404 cada vez que se de un error */
 app.use((req, res, next)=>{
   res.status(404).render('404' , {

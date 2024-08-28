@@ -7,10 +7,10 @@ const Servicio = require('../models/servicio');
 router.get("/", async (req, res)=>{
     try{
     const arrayServicios = await Servicio.find();
-    
+    //console.log(arrayServicios);
     res.render("servicios", {arrayServicios})
 }     catch (error) {
-    console.log(error)
+    console.log(error) 
 }
 })
 
@@ -29,12 +29,13 @@ router.post("/", async (req, res)=>{
         console.log('error:', error)
     }
 });
+
 /* router para editar un documento */
 router.get("/:id",  async  (req, res)=>{
     const id =  req.params.id;
     try{
         const servicioDB = await Servicio.findOne({_id: id})
-        //console.log(servicioDB)
+        
         res.render('detalleserv',{
             servicio: servicioDB,
             error: false
@@ -42,13 +43,35 @@ router.get("/:id",  async  (req, res)=>{
     }
     catch (error) {
         console.log("Error", error)
-        res.render('detalleserv',{
+        res.render('detalle',{
             error: true,
             mensaje: "no se encontro registro que coincida con el id"
         })
 
     }
 })
+/* router para actualizacion */
+router.put('/:id', async(req, res) => {
+    const id = req.params.id;
+    const body = req.body;
+    // console.log(body);
+    try {
+        const servicioDB= await Servicio.findByIdAndUpdate(
+            id, body, { useFindAndModify: false }
+        )
+        res.json({
+            estado: true,
+            mensaje: 'Servicio Editado'
+        })
+        
+    } catch (error) {
+        console.log(error);
+        res.json({
+            estado: false,
+            mensaje: 'Edicion fallida'
+        })
+    }
+});
 /* router para eliminar  un documento */
 router.delete("/:id",  async  (req, res)=>{
     const id =  req.params.id;
